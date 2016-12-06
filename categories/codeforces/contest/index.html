@@ -17,7 +17,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Archives | pitmates&#39; blog · remember something</title>
+    <title>Category: contest | pitmates&#39; blog · remember something</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
@@ -81,7 +81,7 @@
         
     $(function() {
         // page-id...
-        var pageId = "archives/index.html";
+        var pageId = "categories/codeforces/contest/index.html";
         pageId = pageId.substr(0, pageId.indexOf("/"));
         if(pageId === "") pageId = "index";
         
@@ -90,15 +90,18 @@
     </script>
 
     
-
 <div class="container archive-body">
     <div class="row">
-        <div class="col-xs-2 well">
-            <h2 class="archive-icon">归档</h2>
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016年 12月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">2016年 06月</a><span class="archive-list-count">2</span></li></ul>
+        <div class="col-xs-3 well">
+            <div class="archive-title" >
+                <h2 class="tag-icon">contest</h2>
+                <div>
+                    <a href="/categories"><< 返回标签列表</a> 
+                </div>
+            </div>
         </div>
         
-        <div class="col-xs-10">
+        <div class="col-xs-9" id="category-list-body">
             
             <article class="post">
                 <div class="jumbotron">
@@ -116,50 +119,14 @@
                 </div>
             </article>
             
-            <article class="post">
-                <div class="jumbotron">
-                    <h1><a href="/2016/06/08/hihoCoder-contest-21/" title="hihoCoder contest 21">hihoCoder contest 21</a></h1>
-
-                    
-                        <p>hihoCoder挑战赛21</p>
-                    
-
-                    <p class="say-title">
-                        —— <img src="/images/avatar.gif" class="img-circle index-post-avatar" />
-                        <a href="http://zlper.net" target="_blank" title="pitmates">pitmates</a>
-                        于2016-06-08以 <a class="article-tag-link" href="/tags/algorithm/">algorithm</a> 谈人生经验
-                    </p>
-                </div>
-            </article>
-            
-            <article class="post">
-                <div class="jumbotron">
-                    <h1><a href="/2016/06/02/hihoCoder太阁最新面经算法竞赛2/" title="hihoCoder太阁最新面经算法竞赛2">hihoCoder太阁最新面经算法竞赛2</a></h1>
-
-                    
-                        <p>hihoCoder太阁最新面经算法竞赛2</p>
-                    
-
-                    <p class="say-title">
-                        —— <img src="/images/avatar.gif" class="img-circle index-post-avatar" />
-                        <a href="http://zlper.net" target="_blank" title="pitmates">pitmates</a>
-                        于2016-06-02以 <a class="article-tag-link" href="/tags/algorithm/">algorithm</a> 谈人生经验
-                    </p>
-                </div>
-            </article>
-            
             
             
         </div>
     </div>
+        
+    <div class="col-xs-19 all-list-box">
+    </div>
 </div>
-
-<script>
-$(function() {
-    $(".archive-list-count").addClass("badge");
-});
-</script>
-
 <footer id="footer">
   <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> </script>
   
