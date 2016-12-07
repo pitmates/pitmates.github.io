@@ -37,6 +37,12 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+	
+	<!-- highlight -->
+	<link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.8.0/styles/monokai-sublime.min.css">
+	<script src="//cdn.bootcss.com/highlight.js/9.8.0/highlight.min.js"></script>
+	<script src="//cdn.bootcss.com/highlight.js/9.8.0/languages/cpp.min.js"></script>
+	
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
@@ -75,6 +81,7 @@
         </div>
     </nav>
     
+	<script>hljs.initHighlightingOnLoad();</script>
     <script>
     var backRoot = "/images/background/";
     var backArray = [ "1.jpeg", "2.jpg", "3.png", "4.jpg", "5.jpg", "6.jpg", "7.jpeg", "8.jpg", "9.png", "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg",  ];
@@ -117,8 +124,49 @@
 <p>　　保证洞穴中至少有一个箱子是装有宝物的。</p>
 <h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><p>　　输出一行表示最少需要几分钟。</p>
 <h3 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h3><p>　　贪心找到需要移动空箱子最少（设为ms）的那一组，先移动它，所有需要移动的次数就是<code>ms + 所有需要移动的箱子的个数</code></p>
-<h3 id="code"><a href="#code" class="headerlink" title="code"></a>code</h3><figure class="highlight cs"><table><tr><td class="code"><pre><div class="line"><span class="meta">#include &lt;bits/stdc++.h&gt;</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,j,k) for(int i = (int) j; i &lt; (int) k; ++i)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="title">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">111</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">char</span> c[N][N];</div><div class="line"><span class="keyword">int</span> le[N], len[N];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line"></div><div class="line">    scanf(<span class="string">"%d"</span>, &amp;n);</div><div class="line">    rep(i, <span class="number">0</span>, n) scanf(<span class="string">"%s"</span>, c[i]);</div><div class="line">    memset(le, <span class="number">0</span>, <span class="keyword">sizeof</span> le);</div><div class="line">    rep(i, <span class="number">0</span>, n) &#123;</div><div class="line">        <span class="keyword">int</span> x = strlen(c[i]);</div><div class="line">        rep(j, <span class="number">0</span>, x) <span class="keyword">if</span>(c[i][j] == <span class="string">'o'</span>) &#123;</div><div class="line">            le[i] = x - j;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    memset(len, <span class="number">0</span>, <span class="keyword">sizeof</span> len);</div><div class="line">    rep(i, <span class="number">0</span>, n) &#123;</div><div class="line">        <span class="keyword">int</span> x = strlen(c[i]);</div><div class="line">        rep(j, <span class="number">0</span>, x) <span class="keyword">if</span>(c[i][j] == <span class="string">'o'</span>) &#123;</div><div class="line">            len[i]++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> mi = N, ans = <span class="number">0</span>;</div><div class="line">    rep(i, <span class="number">0</span>, n) &#123;</div><div class="line">        <span class="keyword">if</span>(mi &gt; le[i]-len[i]) mi = le[i]-len[i];</div><div class="line">        ans += le[i];</div><div class="line">    &#125;</div><div class="line">    ans += mi;</div><div class="line">    printf(<span class="string">"%d\n"</span>, ans);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="B、Longest-Non-Decreasing-Subsequence"><a href="#B、Longest-Non-Decreasing-Subsequence" class="headerlink" title="B、Longest Non-Decreasing Subsequence"></a><a href="http://hihocoder.com/problemset/problem/1314" target="_blank" rel="external">B、Longest Non-Decreasing Subsequence</a></h2><h3 id="题意：-1"><a href="#题意：-1" class="headerlink" title="题意："></a>题意：</h3><h4 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h4><p>　　ZZX喜欢01序列，尤其是不下降的01序列。一个不下降的01序列 s[1..k] 需要满足 s[i] ≤ s[i+1],1 ≤ i &lt; k。</p>
+<h3 id="code"><a href="#code" class="headerlink" title="code"></a>code</h3><pre><code>#include &lt;bits/stdc++.h&gt;
+
+#define rep(i,j,k) for(int i = (int) j; i &lt; (int) k; ++i)
+#define mp make_pair
+#define ll long long
+using namespace std;
+const int N = 111;
+
+int n;
+char c[N][N];
+int le[N], len[N];
+
+int main()
+{
+
+    scanf(&quot;%d&quot;, &amp;n);
+    rep(i, 0, n) scanf(&quot;%s&quot;, c[i]);
+    memset(le, 0, sizeof le);
+    rep(i, 0, n) {
+        int x = strlen(c[i]);
+        rep(j, 0, x) if(c[i][j] == &#39;o&#39;) {
+            le[i] = x - j;
+            break;
+        }
+    }
+    memset(len, 0, sizeof len);
+    rep(i, 0, n) {
+        int x = strlen(c[i]);
+        rep(j, 0, x) if(c[i][j] == &#39;o&#39;) {
+            len[i]++;
+        }
+    }
+
+    int mi = N, ans = 0;
+    rep(i, 0, n) {
+        if(mi &gt; le[i]-len[i]) mi = le[i]-len[i];
+        ans += le[i];
+    }
+    ans += mi;
+    printf(&quot;%d\n&quot;, ans);
+    return 0;
+}
+</code></pre><h2 id="B、Longest-Non-Decreasing-Subsequence"><a href="#B、Longest-Non-Decreasing-Subsequence" class="headerlink" title="B、Longest Non-Decreasing Subsequence"></a><a href="http://hihocoder.com/problemset/problem/1314" target="_blank" rel="external">B、Longest Non-Decreasing Subsequence</a></h2><h3 id="题意：-1"><a href="#题意：-1" class="headerlink" title="题意："></a>题意：</h3><h4 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h4><p>　　ZZX喜欢01序列，尤其是不下降的01序列。一个不下降的01序列 s[1..k] 需要满足 s[i] ≤ s[i+1],1 ≤ i &lt; k。</p>
 <p>　　对于一个01序列，ZZX关心的是它的最长不下降子序列。y 是 x 的子序列，当且仅当可以将序列 x 的某些元素删除，使得剩下的元素能按照原顺序组成序列 y。</p>
 <p>　　现在ZZX要生成一个随机01序列 a[1..n]，他给序列的每一位都独立地随机生成了一个数，其中 a[i] 有 p[i] / 1000 的概率为1，有 (1000 - p[i]) / 1000的概率为0，</p>
 <p>　　他想知道 a 的最长不下降子序列的长度的期望值是多少，设这个期望值为 E。为了避免精度问题，你只需要输出 $E * (1000^{n})$ 模 $10^9+7$后的结果。</p>
@@ -126,11 +174,45 @@
 <h4 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h4><p>　　第一行一个整数 n。(1 ≤ n ≤ 200)</p>
 <p>　　第二行有 n 个空格隔开的整数 p[1], p[2],…, p[n]。(0 ≤ p[i] ≤ 1000)</p>
 <h4 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h4><p>　　输出期望长度乘$10^{n}$模$10^{9}+7$后的结果。</p>
-<h3 id="解法：-1"><a href="#解法：-1" class="headerlink" title="解法："></a>解法：</h3><p>　　动态规划，<code>dp[i][j][k]</code>表示前i位，<br>　　　以<code>0</code>结尾的最长子序列长度为<code>j</code>的方法数；<br>　　　以<code>1</code>结尾的最长子序列长度为<code>k</code>的方法数。<br>　　那么，<code>dp[i-1][j][k]</code>的转移就很明显了：<br>　　　当第 i 位为<code>0</code>时，（<code>0</code>只能和<code>0</code>连接，所以是<code>j+1</code>）<br><figure class="highlight markdown"><table><tr><td class="code"><pre><div class="line">　　　dp[<span class="string">i</span>][<span class="symbol">j+1</span>][<span class="string">k</span>] = dp[<span class="string">i</span>][<span class="symbol">j+1</span>][<span class="string">k</span>] + dp[<span class="string">i-1</span>][<span class="symbol">j</span>][<span class="string">k</span>] * (1000 - p[i]);</div></pre></td></tr></table></figure></p>
-<p>　　　当 i 位为 <code>1</code>时，(<code>1</code>可以和<code>0</code>或<code>1</code>连接，所以是<code>max(j+1, k+1)</code>)<br><figure class="highlight markdown"><table><tr><td class="code"><pre><div class="line">　　　dp[<span class="string">i</span>][<span class="symbol">j</span>][<span class="string">max(j+1, k+1)</span>] = dp[<span class="string">i</span>][<span class="symbol">j</span>][<span class="string">max(k+1, j+1)</span>] + dp[<span class="string">i-1</span>][<span class="symbol">j</span>][<span class="string">k</span>] * p[i];</div></pre></td></tr></table></figure></p>
-<p>　　<br>　　最后，我们把<code>dp[n][j][k]</code>乘以<code>max(j, k)</code>相加后，就得出期望了。<br>　　总复杂度 O(n^3)。</p>
-<h3 id="code-1"><a href="#code-1" class="headerlink" title="code"></a>code</h3><figure class="highlight mipsasm"><table><tr><td class="code"><pre><div class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></div><div class="line"></div><div class="line"><span class="comment">#define rep(i, j, k) for(int i = (int) j; i &lt;= (int) k; ++i)</span></div><div class="line"><span class="comment">#define ll long long</span></div><div class="line"><span class="comment">#define mp make_pair</span></div><div class="line"></div><div class="line">using namespace std<span class="comment">;</span></div><div class="line">const int mo = <span class="number">1</span>e9+<span class="number">7</span><span class="comment">;</span></div><div class="line">const int N = <span class="number">202</span><span class="comment">;</span></div><div class="line"></div><div class="line">int dp[N][N][N]<span class="comment">;</span></div><div class="line">int n, p<span class="comment">;</span></div><div class="line"></div><div class="line">inline void <span class="keyword">add(int </span>&amp;a, int <span class="keyword">b) </span>&#123; if((a += <span class="keyword">b) </span>&gt;= mo) a -= mo<span class="comment">; &#125;</span></div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line"><span class="symbol">    ios_base:</span>:<span class="keyword">sync_with_stdio(false);</span></div><div class="line"></div><div class="line">    cin &gt;&gt; n<span class="comment">;</span></div><div class="line">    dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span><span class="comment">;</span></div><div class="line">    rep(i, <span class="number">1</span>, n) &#123;</div><div class="line">        cin &gt;&gt; p<span class="comment">;</span></div><div class="line">        rep(<span class="keyword">j, </span><span class="number">0</span>, i) rep(k, <span class="number">0</span>, i) &#123;</div><div class="line">                <span class="keyword">add(dp[i][j+1][k], </span><span class="number">1</span>ll*(<span class="number">1000</span>-p)*dp[i-1][<span class="keyword">j][k] </span>% mo)<span class="comment">;</span></div><div class="line">                <span class="keyword">add(dp[i][j][max(k+1, </span><span class="keyword">j+1)], </span><span class="number">1</span>ll*p*dp[i-1][<span class="keyword">j][k] </span>% mo)<span class="comment">;</span></div><div class="line">            &#125;</div><div class="line">    &#125;</div><div class="line">    int ans = <span class="number">0</span><span class="comment">;</span></div><div class="line">    rep(i, <span class="number">0</span>, n) rep(<span class="keyword">j, </span><span class="number">0</span>, n) <span class="keyword">add(ans, </span><span class="number">1</span>ll*dp[n][i][<span class="keyword">j] </span>* max(i, <span class="keyword">j) </span>% mo)<span class="comment">;</span></div><div class="line">    cout &lt;&lt; ans &lt;&lt; endl<span class="comment">;</span></div><div class="line">    return <span class="number">0</span><span class="comment">;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="C、D-待解决"><a href="#C、D-待解决" class="headerlink" title="C、D 待解决"></a>C、D 待解决</h2></font size>
+<h3 id="解法：-1"><a href="#解法：-1" class="headerlink" title="解法："></a>解法：</h3><p>　　动态规划，<code>dp[i][j][k]</code>表示前i位，<br>　　　以<code>0</code>结尾的最长子序列长度为<code>j</code>的方法数；<br>　　　以<code>1</code>结尾的最长子序列长度为<code>k</code>的方法数。<br>　　那么，<code>dp[i-1][j][k]</code>的转移就很明显了：<br>　　　当第 i 位为<code>0</code>时，（<code>0</code>只能和<code>0</code>连接，所以是<code>j+1</code>）</p>
+<pre><code>　　　dp[i][j+1][k] = dp[i][j+1][k] + dp[i-1][j][k] * (1000 - p[i]);
+</code></pre><p>　　　当 i 位为 <code>1</code>时，(<code>1</code>可以和<code>0</code>或<code>1</code>连接，所以是<code>max(j+1, k+1)</code>)</p>
+<pre><code>　　　dp[i][j][max(j+1, k+1)] = dp[i][j][max(k+1, j+1)] + dp[i-1][j][k] * p[i];
+</code></pre><p>　　<br>　　最后，我们把<code>dp[n][j][k]</code>乘以<code>max(j, k)</code>相加后，就得出期望了。<br>　　总复杂度 O(n^3)。</p>
+<h3 id="code-1"><a href="#code-1" class="headerlink" title="code"></a>code</h3><pre><code>#include &lt;bits/stdc++.h&gt;
+
+#define rep(i, j, k) for(int i = (int) j; i &lt;= (int) k; ++i)
+#define ll long long
+#define mp make_pair
+
+using namespace std;
+const int mo = 1e9+7;
+const int N = 202;
+
+int dp[N][N][N];
+int n, p;
+
+inline void add(int &amp;a, int b) { if((a += b) &gt;= mo) a -= mo; }
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+
+    cin &gt;&gt; n;
+    dp[0][0][0] = 1;
+    rep(i, 1, n) {
+        cin &gt;&gt; p;
+        rep(j, 0, i) rep(k, 0, i) {
+                add(dp[i][j+1][k], 1ll*(1000-p)*dp[i-1][j][k] % mo);
+                add(dp[i][j][max(k+1, j+1)], 1ll*p*dp[i-1][j][k] % mo);
+            }
+    }
+    int ans = 0;
+    rep(i, 0, n) rep(j, 0, n) add(ans, 1ll*dp[n][i][j] * max(i, j) % mo);
+    cout &lt;&lt; ans &lt;&lt; endl;
+    return 0;
+}
+</code></pre><h2 id="C、D-待解决"><a href="#C、D-待解决" class="headerlink" title="C、D 待解决"></a>C、D 待解决</h2></font size>
 
 			
 			<script type="text/x-mathjax-config">

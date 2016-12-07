@@ -37,6 +37,12 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+	
+	<!-- highlight -->
+	<link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.8.0/styles/monokai-sublime.min.css">
+	<script src="//cdn.bootcss.com/highlight.js/9.8.0/highlight.min.js"></script>
+	<script src="//cdn.bootcss.com/highlight.js/9.8.0/languages/cpp.min.js"></script>
+	
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
@@ -75,6 +81,7 @@
         </div>
     </nav>
     
+	<script>hljs.initHighlightingOnLoad();</script>
     <script>
     var backRoot = "/images/background/";
     var backArray = [ "1.jpeg", "2.jpg", "3.png", "4.jpg", "5.jpg", "6.jpg", "7.jpeg", "8.jpg", "9.png", "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg",  ];
@@ -109,20 +116,250 @@
 <h3 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h3><p>　　将任务按起始时间从小到大排序，按时间依次执行任务。另开一个数据结构存储正在执行的任务的机器的结束时间。</p>
 <p>　　如果即将要来执行的任务的起始时间比正在执行的所有机器的结束时间要小的话，另开一台机器；否则，将任务放在任一台结束时间比之小的机器上（一般选择最早结束任务的机器），并更新该台机器的结束时间。</p>
 <p>　　<code>multiset</code>能很快得解决该问题。</p>
-<h3 id="code"><a href="#code" class="headerlink" title="code"></a>code</h3><figure class="highlight mipsasm"><table><tr><td class="code"><pre><div class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></div><div class="line"><span class="comment">#define rep(i, j, k) for(int i = (int) j; i &lt; (int) k; ++i)</span></div><div class="line"><span class="comment">#define ll long long</span></div><div class="line"><span class="comment">#define mp make_pair</span></div><div class="line"><span class="comment">#define pii pair&lt;int, int &gt;</span></div><div class="line"><span class="comment">#define fi first</span></div><div class="line"><span class="comment">#define se second</span></div><div class="line">using namespace std<span class="comment">;</span></div><div class="line">const int N = <span class="number">1</span>e5+<span class="number">5</span><span class="comment">;</span></div><div class="line">pii p[N]<span class="comment">;</span></div><div class="line"><span class="keyword">multiset&lt;int </span>&gt; s<span class="comment">;</span></div><div class="line">int n<span class="comment">;</span></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line"><span class="symbol">    ios_base:</span>:<span class="keyword">sync_with_stdio(false);</span></div><div class="line">    cin &gt;&gt; n<span class="comment">;</span></div><div class="line">    rep(i, <span class="number">0</span>, n) cin &gt;&gt; p[i].fi &gt;&gt; p[i].se<span class="comment">;</span></div><div class="line">    sort(p, p+n)<span class="comment">;</span></div><div class="line">    s.clear()<span class="comment">;</span></div><div class="line">    s.<span class="keyword">insert(p[0].se);</span></div><div class="line">    <span class="keyword">multiset&lt;int </span>&gt;::iterator it<span class="comment">;</span></div><div class="line">    rep(i, <span class="number">1</span>, n) &#123;</div><div class="line">        it = s.<span class="keyword">begin();</span></div><div class="line">        if((*it) &lt;= p[i].fi) s.erase(it)<span class="comment">;</span></div><div class="line">        s.<span class="keyword">insert(p[i].se);</span></div><div class="line">    &#125;</div><div class="line">    cout &lt;&lt; s.size() &lt;&lt; endl<span class="comment">;</span></div><div class="line">    return <span class="number">0</span><span class="comment">;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="B、岛屿"><a href="#B、岛屿" class="headerlink" title="B、岛屿"></a><a href="http://hihocoder.com/contest/hihointerview7/problem/2" target="_blank" rel="external">B、岛屿</a></h2><h3 id="题意：-1"><a href="#题意：-1" class="headerlink" title="题意："></a>题意：</h3><p>　　给你一张某一海域卫星照片，你需要统计：</p>
+<h3 id="code"><a href="#code" class="headerlink" title="code"></a>code</h3><pre><code>#include &lt;bits/stdc++.h&gt;
+#define rep(i, j, k) for(int i = (int) j; i &lt; (int) k; ++i)
+#define ll long long
+#define mp make_pair
+#define pii pair&lt;int, int &gt;
+#define fi first
+#define se second
+using namespace std;
+const int N = 1e5+5;
+pii p[N];
+multiset&lt;int &gt; s;
+int n;
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin &gt;&gt; n;
+    rep(i, 0, n) cin &gt;&gt; p[i].fi &gt;&gt; p[i].se;
+    sort(p, p+n);
+    s.clear();
+    s.insert(p[0].se);
+    multiset&lt;int &gt;::iterator it;
+    rep(i, 1, n) {
+        it = s.begin();
+        if((*it) &lt;= p[i].fi) s.erase(it);
+        s.insert(p[i].se);
+    }
+    cout &lt;&lt; s.size() &lt;&lt; endl;
+    return 0;
+}
+</code></pre><h2 id="B、岛屿"><a href="#B、岛屿" class="headerlink" title="B、岛屿"></a><a href="http://hihocoder.com/contest/hihointerview7/problem/2" target="_blank" rel="external">B、岛屿</a></h2><h3 id="题意：-1"><a href="#题意：-1" class="headerlink" title="题意："></a>题意：</h3><p>　　给你一张某一海域卫星照片，你需要统计：</p>
 <p>　　1. 照片中海岛的数目<br>　　2. 照片中面积不同的海岛数目<br>　　3. 照片中形状不同的海岛数目<br>　　<br>　　卫星最大为 50 x 50。</p>
 <h3 id="解法：-1"><a href="#解法：-1" class="headerlink" title="解法："></a>解法：</h3><p>　　1. 海岛数量不同说，简单<code>bfs</code>就可以统计出来。</p>
 <p>　　2. 面积不同：在<code>bfs</code>时同时记录同块海岛的其它位置的坐标，并统计块数。最后统计一下海岛数中块数不同的个数就OK了。按海岛块数多少排序一下线性扫一遍就解决了。</p>
 <p>　　3. 形状不同：<b>面积不同则形状一定不同</b>，那么我们只需计算在面积相同的海岛内形状不同的个数。根据 2 的排序，我们可以知道面积相同的海岛在一个连续的区间里面。在这区间里面比较2个海岛是否形状一样。采用<code>向量比较法</code>：<br>　　　假设 i &lt; j，<br>　　　第i块海岛由(xi1, yi1), (xi2, yi2), …, (xik, yik)构成，<br>　　　第j块海岛由(xj1, yj1), (xj2, yj2), …, (xjk, yjk)构成。<br>　　　p从2到k比较(xip-xi1, yip-yi1)与(xjp-xj1, yjp-yj1)是否一样，如果2-&gt;k都完全一样，代表2块海岛形状一样，把j标记为其他颜色。<br>　　最后统计最初颜色的海岛有几块就是形状不一样的海岛数目了。</p>
-<h3 id="code-1"><a href="#code-1" class="headerlink" title="code"></a>code</h3><figure class="highlight cs"><table><tr><td class="code"><pre><div class="line"><span class="meta">#include &lt;bits/stdc++.h&gt;</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> rep1(i, j, k) for(int i = (int) j; i &lt; (int) k; ++i)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i, j, k) for(int i = (int) j; i &lt;= (int) k; ++i)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> pii pair&lt;int, int &gt;</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="title">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">53</span>;</div><div class="line"><span class="keyword">char</span> c[N];</div><div class="line"><span class="keyword">bool</span> g[N][N];</div><div class="line"><span class="keyword">bool</span> used[N][N];</div><div class="line">pair&lt;<span class="keyword">int</span>, vector&lt;pii &gt; &gt; sharp[N*N];</div><div class="line"><span class="keyword">int</span> t;</div><div class="line"><span class="keyword">int</span> n, m;</div><div class="line"><span class="keyword">int</span> dx[] = &#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>&#125;;</div><div class="line"><span class="keyword">int</span> dy[] = &#123;<span class="number">0</span>, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span>(<span class="params"><span class="keyword">int</span> x, <span class="keyword">int</span> y</span>) </span>&#123;</div><div class="line">    queue&lt;pii &gt; q;</div><div class="line">    q.push(mp(x, y));</div><div class="line">    used[x][y] = <span class="number">1</span>;</div><div class="line">    ++t; <span class="keyword">int</span> z = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span>(!q.empty()) &#123;</div><div class="line">        pii p = q.front();</div><div class="line">        q.pop();</div><div class="line">        ++z;</div><div class="line">        sharp[t].se.push_back(mp(p.fi, p.se));</div><div class="line">        rep(i, <span class="number">0</span>, <span class="number">3</span>) &#123;</div><div class="line">            <span class="keyword">int</span> u = p.fi + dx[i], v = p.se + dy[i];</div><div class="line">            <span class="keyword">if</span>(!used[u][v] &amp;&amp; g[u][v] &amp;&amp; u &amp;&amp; u &lt;= n &amp;&amp; v &amp;&amp; v &lt;= m) &#123;</div><div class="line">                used[u][v] = <span class="number">1</span>;</div><div class="line">                q.push(mp(u, v));</div><div class="line">                ++z;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    sharp[t].fi = z;</div><div class="line">    <span class="keyword">return</span> ;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">trace</span>(<span class="params"><span class="keyword">int</span> u, <span class="keyword">int</span> v</span>) </span>&#123;</div><div class="line">    <span class="keyword">int</span> sz = sharp[u].se.size();</div><div class="line"><span class="comment">//printf("u:%d v:%d sz:%d\n", u, v, sz);</span></div><div class="line">    <span class="keyword">if</span>(sz == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> f = <span class="number">1</span>;</div><div class="line">    rep1(i, <span class="number">1</span>, sz) &#123;</div><div class="line">        <span class="keyword">int</span> x1 = sharp[u].se[i].fi - sharp[u].se[i<span class="number">-1</span>].fi;</div><div class="line">        <span class="keyword">int</span> y1 = sharp[u].se[i].se - sharp[u].se[i<span class="number">-1</span>].se;</div><div class="line">        <span class="keyword">int</span> x2 = sharp[v].se[i].fi - sharp[v].se[i<span class="number">-1</span>].fi;</div><div class="line">        <span class="keyword">int</span> y2 = sharp[v].se[i].se - sharp[v].se[i<span class="number">-1</span>].se;</div><div class="line"><span class="comment">//printf("i:%d (x1:%d y1:%d) (x2:%d y2:%d)\n", i, x1, y1, x2, y2);</span></div><div class="line">        <span class="keyword">if</span>(x1 != x2 || y1 != y2) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    memset(used, <span class="literal">false</span>, <span class="keyword">sizeof</span> used);</div><div class="line">    t = <span class="number">-1</span>;</div><div class="line">    rep(i, <span class="number">1</span>, n) &#123;</div><div class="line">        rep(j, <span class="number">1</span>, m) &#123;</div><div class="line">            <span class="keyword">if</span>(!used[i][j] &amp;&amp; g[i][j]) bfs(i, j);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    ++t; <span class="comment">// the number of islands</span></div><div class="line">    sort(sharp, sharp+t);</div><div class="line">    sharp[t].fi = <span class="number">-1</span>;</div><div class="line">    <span class="keyword">int</span> tt = <span class="number">0</span>; <span class="comment">// the islands of different area</span></div><div class="line">    rep1(i, <span class="number">0</span>, t) <span class="keyword">if</span>(sharp[i].fi != sharp[i+<span class="number">1</span>].fi) ++tt;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> ttt = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, r = <span class="number">0</span>;</div><div class="line">    <span class="keyword">bool</span> vis[N*N];</div><div class="line">    memset(vis, <span class="number">0</span>, <span class="keyword">sizeof</span> vis);</div><div class="line">    rep(i, <span class="number">1</span>, t) &#123;</div><div class="line">        <span class="keyword">if</span>(sharp[i].fi == sharp[i<span class="number">-1</span>].fi) r = i;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">//printf("l:%d   r:%d\n", l, r);</span></div><div class="line">            <span class="keyword">if</span>(r &gt; l)&#123;</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = l; j &lt;= r; ++j) &#123;</div><div class="line">                    <span class="keyword">if</span>(vis[j]) <span class="keyword">continue</span>;</div><div class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> k = j+<span class="number">1</span>; k &lt;= r; ++k) &#123;</div><div class="line">                        <span class="keyword">if</span>(vis[k]) <span class="keyword">continue</span>;</div><div class="line">                        <span class="keyword">if</span>(trace(j, k)) vis[k] = <span class="number">1</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">       <span class="comment">// rep(j, l, r) printf("#%d ", vis[j]); puts("");</span></div><div class="line">            &#125;</div><div class="line">            l = r = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//rep1(i, 0, t) printf("%d ", vis[i]); puts("");</span></div><div class="line">    rep1(i, <span class="number">0</span>, t) <span class="keyword">if</span>(!vis[i]) ++ttt;</div><div class="line">    printf(<span class="string">"%d %d %d\n"</span>, t, tt, ttt);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line"><span class="meta">#ifdef PIT</span></div><div class="line">freopen(<span class="string">"2.in"</span>, <span class="string">"r"</span>, stdin);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> // PIT</span></div><div class="line">    scanf(<span class="string">"%d %d"</span>, &amp;n, &amp;m);</div><div class="line">    rep(i, <span class="number">1</span>, n) &#123;</div><div class="line">        scanf(<span class="string">"%s"</span>, c);</div><div class="line">        rep1(j, <span class="number">0</span>, m) g[i][j+<span class="number">1</span>] = (c[j] == <span class="string">'#'</span>);</div><div class="line">    &#125;</div><div class="line">    solve();</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="C、二进制小数"><a href="#C、二进制小数" class="headerlink" title="C、二进制小数"></a><a href="http://hihocoder.com/contest/hihointerview7/problem/3" target="_blank" rel="external">C、二进制小数</a></h2><h3 id="题意：-2"><a href="#题意：-2" class="headerlink" title="题意："></a>题意：</h3><p>　　给定一个十进制小数X，判断X的二进制表示是否是有限确定的。</p>
+<h3 id="code-1"><a href="#code-1" class="headerlink" title="code"></a>code</h3><pre><code>#include &lt;bits/stdc++.h&gt;
+#define rep1(i, j, k) for(int i = (int) j; i &lt; (int) k; ++i)
+#define rep(i, j, k) for(int i = (int) j; i &lt;= (int) k; ++i)
+#define ll long long
+#define mp make_pair
+#define pii pair&lt;int, int &gt;
+#define fi first
+#define se second
+using namespace std;
+
+const int N = 53;
+char c[N];
+bool g[N][N];
+bool used[N][N];
+pair&lt;int, vector&lt;pii &gt; &gt; sharp[N*N];
+int t;
+int n, m;
+int dx[] = {-1, 0, 0, 1};
+int dy[] = {0, -1, 1, 0};
+
+void bfs(int x, int y) {
+    queue&lt;pii &gt; q;
+    q.push(mp(x, y));
+    used[x][y] = 1;
+    ++t; int z = 0;
+    while(!q.empty()) {
+        pii p = q.front();
+        q.pop();
+        ++z;
+        sharp[t].se.push_back(mp(p.fi, p.se));
+        rep(i, 0, 3) {
+            int u = p.fi + dx[i], v = p.se + dy[i];
+            if(!used[u][v] &amp;&amp; g[u][v] &amp;&amp; u &amp;&amp; u &lt;= n &amp;&amp; v &amp;&amp; v &lt;= m) {
+                used[u][v] = 1;
+                q.push(mp(u, v));
+                ++z;
+            }
+        }
+    }
+    sharp[t].fi = z;
+    return ;
+}
+
+int trace(int u, int v) {
+    int sz = sharp[u].se.size();
+//printf(&quot;u:%d v:%d sz:%d\n&quot;, u, v, sz);
+    if(sz == 1) return 1;
+    int f = 1;
+    rep1(i, 1, sz) {
+        int x1 = sharp[u].se[i].fi - sharp[u].se[i-1].fi;
+        int y1 = sharp[u].se[i].se - sharp[u].se[i-1].se;
+        int x2 = sharp[v].se[i].fi - sharp[v].se[i-1].fi;
+        int y2 = sharp[v].se[i].se - sharp[v].se[i-1].se;
+//printf(&quot;i:%d (x1:%d y1:%d) (x2:%d y2:%d)\n&quot;, i, x1, y1, x2, y2);
+        if(x1 != x2 || y1 != y2) return 0;
+    }
+    return 1;
+}
+
+void solve() {
+    memset(used, false, sizeof used);
+    t = -1;
+    rep(i, 1, n) {
+        rep(j, 1, m) {
+            if(!used[i][j] &amp;&amp; g[i][j]) bfs(i, j);
+        }
+    }
+    ++t; // the number of islands
+    sort(sharp, sharp+t);
+    sharp[t].fi = -1;
+    int tt = 0; // the islands of different area
+    rep1(i, 0, t) if(sharp[i].fi != sharp[i+1].fi) ++tt;
+
+    int ttt = 0;
+    int l = 0, r = 0;
+    bool vis[N*N];
+    memset(vis, 0, sizeof vis);
+    rep(i, 1, t) {
+        if(sharp[i].fi == sharp[i-1].fi) r = i;
+        else {
+            //printf(&quot;l:%d   r:%d\n&quot;, l, r);
+            if(r &gt; l){
+                for(int j = l; j &lt;= r; ++j) {
+                    if(vis[j]) continue;
+                    for(int k = j+1; k &lt;= r; ++k) {
+                        if(vis[k]) continue;
+                        if(trace(j, k)) vis[k] = 1;
+                    }
+                }
+       // rep(j, l, r) printf(&quot;#%d &quot;, vis[j]); puts(&quot;&quot;);
+            }
+            l = r = i;
+        }
+    }
+    //rep1(i, 0, t) printf(&quot;%d &quot;, vis[i]); puts(&quot;&quot;);
+    rep1(i, 0, t) if(!vis[i]) ++ttt;
+    printf(&quot;%d %d %d\n&quot;, t, tt, ttt);
+}
+
+int main()
+{
+#ifdef PIT
+freopen(&quot;2.in&quot;, &quot;r&quot;, stdin);
+#endif // PIT
+    scanf(&quot;%d %d&quot;, &amp;n, &amp;m);
+    rep(i, 1, n) {
+        scanf(&quot;%s&quot;, c);
+        rep1(j, 0, m) g[i][j+1] = (c[j] == &#39;#&#39;);
+    }
+    solve();
+    return 0;
+}
+</code></pre><h2 id="C、二进制小数"><a href="#C、二进制小数" class="headerlink" title="C、二进制小数"></a><a href="http://hihocoder.com/contest/hihointerview7/problem/3" target="_blank" rel="external">C、二进制小数</a></h2><h3 id="题意：-2"><a href="#题意：-2" class="headerlink" title="题意："></a>题意：</h3><p>　　给定一个十进制小数X，判断X的二进制表示是否是有限确定的。</p>
 <p>　　例如0.5的二进制表示是0.1，0.75的二进制表示是0.11，0.3没有确定有限的二进制表示。</p>
 <p>　　小数部分长度不超过100。</p>
 <h3 id="解法：-2"><a href="#解法：-2" class="headerlink" title="解法："></a>解法：</h3><p>　　1. $10^{-100}$ 化成二进制大约为334位，所以我们开一个500位的字符串数组，第i个字符串存储2^(-i)的字符串表示， 因为i每次<code>+1</code>，最多增加一个有效位<code>0</code>和最后一位数字<code>5</code>,所以单个字符串最长不超过1000。当超过500还未表示完，我们就把它归为无限二进制小数。</p>
 <p>　　2. i从1-500比较字符串i与待定字符串的大小，如果小，则为0；大则为1，然后减去字符串i的值。</p>
 <p>　　3. 若i的位置大于原定串的长度，则判断减完值是否为<code>000···</code>，若是，则跳出循环。也可以算完500个后判断值是否为<code>000···</code>，再去掉后缀0就行。</p>
-<h3 id="code-2"><a href="#code-2" class="headerlink" title="code"></a>code</h3><figure class="highlight perl"><table><tr><td class="code"><pre><div class="line"><span class="comment">#include &lt;bits/stdc++.h&gt;</span></div><div class="line"></div><div class="line"><span class="comment">#define rep(i, j, k) for(int i = (int) j; i &lt; (int) k; ++i)</span></div><div class="line"><span class="comment">#define ll long long</span></div><div class="line"><span class="comment">#define mp make_pair</span></div><div class="line"></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">const <span class="keyword">int</span> N = <span class="number">505</span>;</div><div class="line"></div><div class="line">char <span class="keyword">s</span>[N][N&lt;&lt;<span class="number">1</span>];</div><div class="line"><span class="keyword">int</span> T, len;</div><div class="line">char c[N];</div><div class="line"><span class="keyword">int</span> ans[N&lt;&lt;<span class="number">1</span>], t;</div><div class="line"></div><div class="line">void init() &#123;</div><div class="line">    <span class="keyword">s</span>[<span class="number">1</span>][<span class="number">0</span>] = <span class="string">'0'</span>;<span class="keyword">s</span>[<span class="number">1</span>][<span class="number">1</span>] = <span class="string">'.'</span>;<span class="keyword">s</span>[<span class="number">1</span>][<span class="number">2</span>] = <span class="string">'5'</span>;</div><div class="line">    rep(i, <span class="number">2</span>, N) &#123;</div><div class="line">        <span class="keyword">int</span> len = strlen(<span class="keyword">s</span>[i-<span class="number">1</span>]);</div><div class="line">        <span class="keyword">int</span> <span class="keyword">m</span> = <span class="number">0</span>, d;</div><div class="line">        rep(j, <span class="number">0</span>, len) &#123;</div><div class="line">            <span class="keyword">if</span>(<span class="keyword">s</span>[i-<span class="number">1</span>][j] == <span class="string">'.'</span>) &#123; <span class="keyword">s</span>[i][j] = <span class="string">'.'</span>; <span class="keyword">continue</span>;&#125;</div><div class="line">            d = <span class="keyword">m</span> * <span class="number">10</span> + <span class="keyword">s</span>[i-<span class="number">1</span>][j] - <span class="string">'0'</span>;</div><div class="line">            <span class="keyword">s</span>[i][j] = d / <span class="number">2</span> + <span class="string">'0'</span>;</div><div class="line">            <span class="keyword">m</span> = d % <span class="number">2</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">m</span>) <span class="keyword">s</span>[i][len] = <span class="string">'5'</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void <span class="function"><span class="keyword">sub</span>(<span class="title">char</span> <span class="title">s</span>[]) </span>&#123;</div><div class="line">    <span class="keyword">int</span> le = strlen(<span class="keyword">s</span>);</div><div class="line">    <span class="keyword">int</span> lend = <span class="number">0</span>, va, i = le-<span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span>(len &lt; le) &#123;</div><div class="line">        <span class="keyword">for</span>( ; i &gt;= len; --i) &#123;</div><div class="line">            va = (i == le-<span class="number">1</span>) ? <span class="number">10</span> : <span class="number">9</span>;</div><div class="line">            c[i] = va - <span class="keyword">s</span>[i]  + <span class="string">'0'</span> + <span class="string">'0'</span>;</div><div class="line">        &#125;</div><div class="line">        va = i;</div><div class="line">        <span class="keyword">while</span>(c[va] == <span class="string">'0'</span>) &#123;c[va] = <span class="string">'9'</span>; --va; &#125;</div><div class="line">        <span class="keyword">if</span>(c[va] != <span class="string">'.'</span>) c[va] = c[va] - <span class="number">1</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>( ; i &gt; <span class="number">1</span>; --i) &#123;</div><div class="line"><span class="regexp">//printf</span>(<span class="string">"i:%d c:%c s:%c \n"</span>, i, c[i], <span class="keyword">s</span>[i]);</div><div class="line">        <span class="keyword">if</span>(c[i] &lt; <span class="keyword">s</span>[i]) &#123;</div><div class="line">            c[i] = <span class="number">10</span> + c[i] - <span class="keyword">s</span>[i] + <span class="string">'0'</span>;</div><div class="line">            va = i-<span class="number">1</span>;</div><div class="line">            <span class="keyword">while</span>(c[va] == <span class="string">'0'</span>) &#123; c[va] = <span class="string">'9'</span>; --va;&#125;</div><div class="line">            c[va] = c[va] - <span class="number">1</span>;</div><div class="line"><span class="regexp">//printf</span>(<span class="string">"c:  %s\n"</span>, c);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> c[i] = c[i] - <span class="keyword">s</span>[i] + <span class="string">'0'</span>;</div><div class="line"><span class="regexp">//printf</span>(<span class="string">"==&gt; i:%d c:%s  \n"</span>, i, c);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void solve() &#123;</div><div class="line">    bool f; t = <span class="number">1</span>;</div><div class="line">    rep(i, <span class="number">1</span>, N) &#123;</div><div class="line">        len = strlen(c); f = <span class="number">1</span>;</div><div class="line">        rep(j, <span class="number">2</span>, len) <span class="keyword">if</span>(c[j] != <span class="string">'0'</span>) &#123;f = <span class="number">0</span>; <span class="keyword">break</span>;&#125;</div><div class="line">        <span class="keyword">if</span>(f) <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">int</span> v = strcmp(c, <span class="keyword">s</span>[i]);</div><div class="line">        <span class="keyword">if</span>(v &lt; <span class="number">0</span>) &#123; ans[t++] = <span class="number">0</span>; <span class="keyword">continue</span>; &#125;</div><div class="line">        ans[t++] = <span class="number">1</span>;</div><div class="line">        <span class="function"><span class="keyword">sub</span></span>(<span class="keyword">s</span>[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(!f) puts(<span class="string">"NO"</span>);</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">printf</span>(<span class="string">"0."</span>);</div><div class="line">        rep(i, <span class="number">1</span>, t) <span class="keyword">printf</span>(<span class="string">"%d"</span>, ans[i]);</div><div class="line">        puts(<span class="string">""</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">int</span> main()</div><div class="line">&#123;</div><div class="line"><span class="comment">#ifdef PIT</span></div><div class="line">freopen(<span class="string">"3.in"</span>, <span class="string">"r"</span>, stdin);</div><div class="line"><span class="comment">#endif // PIT</span></div><div class="line">    init();</div><div class="line">    <span class="keyword">for</span>(scanf(<span class="string">"%d"</span>, &amp;T) ; T; --T) &#123;</div><div class="line">        scanf(<span class="string">"%s"</span>, c);</div><div class="line">        solve();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></font size>
+<h3 id="code-2"><a href="#code-2" class="headerlink" title="code"></a>code</h3><pre><code>#include &lt;bits/stdc++.h&gt;
+
+#define rep(i, j, k) for(int i = (int) j; i &lt; (int) k; ++i)
+#define ll long long
+#define mp make_pair
+
+using namespace std;
+
+const int N = 505;
+
+char s[N][N&lt;&lt;1];
+int T, len;
+char c[N];
+int ans[N&lt;&lt;1], t;
+
+void init() {
+    s[1][0] = &#39;0&#39;;s[1][1] = &#39;.&#39;;s[1][2] = &#39;5&#39;;
+    rep(i, 2, N) {
+        int len = strlen(s[i-1]);
+        int m = 0, d;
+        rep(j, 0, len) {
+            if(s[i-1][j] == &#39;.&#39;) { s[i][j] = &#39;.&#39;; continue;}
+            d = m * 10 + s[i-1][j] - &#39;0&#39;;
+            s[i][j] = d / 2 + &#39;0&#39;;
+            m = d % 2;
+        }
+        if(m) s[i][len] = &#39;5&#39;;
+    }
+    return ;
+}
+
+void sub(char s[]) {
+    int le = strlen(s);
+    int lend = 0, va, i = le-1;
+    if(len &lt; le) {
+        for( ; i &gt;= len; --i) {
+            va = (i == le-1) ? 10 : 9;
+            c[i] = va - s[i]  + &#39;0&#39; + &#39;0&#39;;
+        }
+        va = i;
+        while(c[va] == &#39;0&#39;) {c[va] = &#39;9&#39;; --va; }
+        if(c[va] != &#39;.&#39;) c[va] = c[va] - 1;
+
+    }
+    for( ; i &gt; 1; --i) {
+//printf(&quot;i:%d c:%c s:%c \n&quot;, i, c[i], s[i]);
+        if(c[i] &lt; s[i]) {
+            c[i] = 10 + c[i] - s[i] + &#39;0&#39;;
+            va = i-1;
+            while(c[va] == &#39;0&#39;) { c[va] = &#39;9&#39;; --va;}
+            c[va] = c[va] - 1;
+//printf(&quot;c:  %s\n&quot;, c);
+        }
+        else c[i] = c[i] - s[i] + &#39;0&#39;;
+//printf(&quot;==&gt; i:%d c:%s  \n&quot;, i, c);
+    }
+    return ;
+}
+
+void solve() {
+    bool f; t = 1;
+    rep(i, 1, N) {
+        len = strlen(c); f = 1;
+        rep(j, 2, len) if(c[j] != &#39;0&#39;) {f = 0; break;}
+        if(f) break;
+        int v = strcmp(c, s[i]);
+        if(v &lt; 0) { ans[t++] = 0; continue; }
+        ans[t++] = 1;
+        sub(s[i]);
+    }
+    if(!f) puts(&quot;NO&quot;);
+    else {
+        printf(&quot;0.&quot;);
+        rep(i, 1, t) printf(&quot;%d&quot;, ans[i]);
+        puts(&quot;&quot;);
+    }
+    return ;
+}
+
+int main()
+{
+#ifdef PIT
+freopen(&quot;3.in&quot;, &quot;r&quot;, stdin);
+#endif // PIT
+    init();
+    for(scanf(&quot;%d&quot;, &amp;T) ; T; --T) {
+        scanf(&quot;%s&quot;, c);
+        solve();
+    }
+    return 0;
+}
+</code></pre></font size>
 
 			
 			<script type="text/x-mathjax-config">
