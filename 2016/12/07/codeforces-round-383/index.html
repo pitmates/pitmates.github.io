@@ -1,0 +1,172 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    <meta name="author" content="pitmates">
+    
+    <meta name="description" content="codeforces round 383">
+    
+    
+
+    
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>codeforces round 383 | pitmates&#39; blog · remember something</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery.backstretch.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/headroom.min.js"></script>
+    <script src="/js/jquery.headroom.min.js"></script> 
+    <script src="/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://zlper.net" title="pitmates' blog">pitmates&#39; blog</a>
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                <p class="navbar-text pull-right">remember something</p>
+
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/archives">归档</a></li>
+                    
+                    <li id="nav-tags"><a href="/tags">标签</a></li>
+                    
+                    <li id="nav-categories"><a href="/categories">分类</a></li>
+                    
+                    <li id="nav-vita"><a href="/vita">关于</a></li>
+                    
+                    <li id="nav-links"><a href="/links">链接</a></li>
+                    
+                    
+                    <li><a href="https://github.com/pitmates" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <script>
+    var backRoot = "/images/background/";
+    var backArray = [ "1.jpeg", "2.jpg", "3.png", "4.jpg", "5.jpg", "6.jpg", "7.jpeg", "8.jpg", "9.png", "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2016/12/07/codeforces-round-383/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>codeforces round 383</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2016-12-07T02:38:46.000Z" itemprop="datePublished">2016-12-07</time>，更新于:<time datetime="2016-12-07T03:50:30.640Z" itemprop="dateModified">2016-12-07</time>，By <a href="http://zlper.net" title="pitmates">pitmates</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <font size=3><strong class="toc-title">大纲</strong></font size>
+                <font size=3><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#742A、Arpa’s-hard-exam-and-Mehrdad’s-naive-cheat"><span class="toc-number">1.</span> <span class="toc-text">742A、Arpa’s hard exam and Mehrdad’s naive cheat</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路："><span class="toc-number">1.1.</span> <span class="toc-text">思路：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code"><span class="toc-number">1.2.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#742B、Arpa’s-hard-exam-and-Mehrdad’s-naive-cheat"><span class="toc-number">2.</span> <span class="toc-text">742B、Arpa’s hard exam and Mehrdad’s naive cheat</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解法："><span class="toc-number">2.1.</span> <span class="toc-text">解法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code-1"><span class="toc-number">2.2.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#741A、Arpa’s-loud-Owf-and-Mehrdad’s-evil-plan"><span class="toc-number">3.</span> <span class="toc-text">741A、Arpa’s loud Owf and Mehrdad’s evil plan</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解法：-1"><span class="toc-number">3.1.</span> <span class="toc-text">解法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code-2"><span class="toc-number">3.2.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#741B、Arpa’s-weak-amphitheater-and-Mehrdad’s-valuable-Hoses"><span class="toc-number">4.</span> <span class="toc-text">741B、Arpa’s weak amphitheater and Mehrdad’s valuable Hoses</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解法：-2"><span class="toc-number">4.1.</span> <span class="toc-text">解法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code-3"><span class="toc-number">4.2.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7421、Arpa’s-overnight-party-and-Mehrdad’s-silent-entering"><span class="toc-number">5.</span> <span class="toc-text">7421、Arpa’s overnight party and Mehrdad’s silent entering</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解法：-3"><span class="toc-number">5.1.</span> <span class="toc-text">解法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code-4"><span class="toc-number">5.2.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#739D、739E待解决"><span class="toc-number">6.</span> <span class="toc-text">739D、739E待解决</span></a></li></ol></font size>
+            </div>
+            
+            <font size=4><p>　　<a href="http://codeforces.com/contest/742" target="_blank" rel="external">codeforces round 383</a> </p>
+<a id="more"></a>
+<h2 id="742A、Arpa’s-hard-exam-and-Mehrdad’s-naive-cheat"><a href="#742A、Arpa’s-hard-exam-and-Mehrdad’s-naive-cheat" class="headerlink" title="742A、Arpa’s hard exam and Mehrdad’s naive cheat"></a>742A、Arpa’s hard exam and Mehrdad’s naive cheat</h2><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>　　只需算8的n次方，每次模10去最后一位。找规律或者快速幂均可。</p>
+<h3 id="code"><a href="#code" class="headerlink" title="code"></a>code</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> n;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">multi_mod</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> t = <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span>(y)&#123;</div><div class="line">        <span class="keyword">if</span>(y&amp;<span class="number">1</span>) t = (t * x) % <span class="number">10</span>;</div><div class="line">        x = (x * x) % <span class="number">10</span>;</div><div class="line">        y &gt;&gt;= <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> t;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, multi_mod(<span class="number">8</span>, n));</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="742B、Arpa’s-hard-exam-and-Mehrdad’s-naive-cheat"><a href="#742B、Arpa’s-hard-exam-and-Mehrdad’s-naive-cheat" class="headerlink" title="742B、Arpa’s hard exam and Mehrdad’s naive cheat"></a>742B、Arpa’s hard exam and Mehrdad’s naive cheat</h2><h3 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h3><p>　　统计每个数字 <code>k</code> 和 <code>x xor k</code> 出现的次数，答案就是所有的count[k] <em> count[x^k] 的和，注意特判 <code>k == (x xor k)</code>的情形（值为`count[k] </em> (count[k] - 1) / 2<code>）。答案会超</code>int`。</p>
+<h3 id="code-1"><a href="#code-1" class="headerlink" title="code"></a>code</h3><figure class="highlight"><table><tr><td class="code"><pre><div class="line">#include &lt;bits/stdc++.h&gt;</div><div class="line"></div><div class="line">#define rep(i, j, k) for(int i = (int) j; i &lt; (int) k; ++i)</div><div class="line">#define sz(x) ((int) (x).size())</div><div class="line">#define ll long long</div><div class="line">#define mp make_pair</div><div class="line">#define pii pair&lt;int, int &gt;</div><div class="line">#define fi first</div><div class="line">#define se second</div><div class="line">#define pb push_back</div><div class="line">#define inf 0x3f3f3f3f</div><div class="line">#define INF 0x3f3f3f3f3f3f3f</div><div class="line">#define zero(x) memset((x), (0), sizeof (x))</div><div class="line">#define zerox(x, y) memset((x), (y), sizeof (x))</div><div class="line"></div><div class="line">using namespace std;</div><div class="line">const int N = 100100;</div><div class="line">int n, x;</div><div class="line">int a[N], b[N];</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">//freopen("", "r", stdin);</div><div class="line">//freopen(".out", "w", stdout);</div><div class="line"></div><div class="line">    ios_base::sync_with_stdio(false); cin.tie(0);</div><div class="line">    </div><div class="line">    cin &gt;&gt; n &gt;&gt; x;</div><div class="line">    zero(b);</div><div class="line">    rep(i, 0, n) cin &gt;&gt; a[i], b[a[i]]++;</div><div class="line">    ll ans = 0;</div><div class="line">    rep(i, 0, n)&#123;</div><div class="line">        int y = x ^ a[i];</div><div class="line">        if(y &gt;= N || !b[a[i]] || !b[y]) continue;</div><div class="line">        if(y == a[i]) ans += 1LL * b[y] * (b[y]-1) / 2;</div><div class="line">        else ans += 1LL * b[y] * b[a[i]];</div><div class="line">        b[y] = b[a[i]] = 0;</div><div class="line">    &#125;</div><div class="line">    cout &lt;&lt; ans;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="741A、Arpa’s-loud-Owf-and-Mehrdad’s-evil-plan"><a href="#741A、Arpa’s-loud-Owf-and-Mehrdad’s-evil-plan" class="headerlink" title="741A、Arpa’s loud Owf and Mehrdad’s evil plan"></a>741A、Arpa’s loud Owf and Mehrdad’s evil plan</h2><h3 id="解法：-1"><a href="#解法：-1" class="headerlink" title="解法："></a>解法：</h3><p>　　找串中循环串的长度<code>len[i]</code>。当长度为偶数时，只需该长度的一半即可实现题目要求（不懂的可自行模拟一番），即<code>ans[i] = len[i] / 2</code>；当长度为奇数时，<code>ans[i] = len[i]</code>。答案就是ans[i]的最小公倍数。</p>
+<h3 id="code-2"><a href="#code-2" class="headerlink" title="code"></a>code</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">110</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"></div><div class="line"><span class="keyword">int</span> a[N], b[N];</div><div class="line"><span class="keyword">int</span> n;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, a+i);</div><div class="line">    <span class="built_in">memset</span>(b, <span class="number">0</span>, <span class="keyword">sizeof</span> b);</div><div class="line">    ll z = <span class="number">1</span>, y;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">        <span class="keyword">int</span> x = a[i];</div><div class="line">        <span class="keyword">if</span>(b[x]) <span class="keyword">continue</span>;</div><div class="line">        y = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(!b[x]) &#123;</div><div class="line">            b[x] = <span class="number">1</span>;</div><div class="line">            x = a[x];</div><div class="line">            ++y;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(y % <span class="number">2</span> == <span class="number">0</span>) y /= <span class="number">2</span>;</div><div class="line">        z = z / __gcd(z, y) * y;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="keyword">if</span>(!b[i]) &#123;</div><div class="line">        z = <span class="number">-1</span>;</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%I64d\n"</span>, z);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="741B、Arpa’s-weak-amphitheater-and-Mehrdad’s-valuable-Hoses"><a href="#741B、Arpa’s-weak-amphitheater-and-Mehrdad’s-valuable-Hoses" class="headerlink" title="741B、Arpa’s weak amphitheater and Mehrdad’s valuable Hoses"></a>741B、Arpa’s weak amphitheater and Mehrdad’s valuable Hoses</h2><h3 id="解法：-2"><a href="#解法：-2" class="headerlink" title="解法："></a>解法：</h3><p>　　</p>
+<h3 id="code-3"><a href="#code-3" class="headerlink" title="code"></a>code</h3><h2 id="7421、Arpa’s-overnight-party-and-Mehrdad’s-silent-entering"><a href="#7421、Arpa’s-overnight-party-and-Mehrdad’s-silent-entering" class="headerlink" title="7421、Arpa’s overnight party and Mehrdad’s silent entering"></a>7421、Arpa’s overnight party and Mehrdad’s silent entering</h2><h3 id="解法：-3"><a href="#解法：-3" class="headerlink" title="解法："></a>解法：</h3><p>　　</p>
+<h3 id="code-4"><a href="#code-4" class="headerlink" title="code"></a>code</h3><h2 id="739D、739E待解决"><a href="#739D、739E待解决" class="headerlink" title="739D、739E待解决"></a>739D、739E待解决</h2></font size>
+
+			
+            <section class="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/2016/12/07/codeforces-round-383/" data-title="codeforces round 383" data-url="http://zlper.net/2016/12/07/codeforces-round-383/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"pitm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+        </div>
+    </div>
+</article>
+
+<footer id="footer">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> </script>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner" align = "center">
+      Copyright &copy; 2016 
+	  <a href="/" target="_blank"> pitmates </a> <br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+	  &nbsp;|&nbsp;
+      Theme by <a href="https://github.com/XadillaX/hexadillax" target="_blank">Hexadillax</a>
+	  &nbsp;|&nbsp;
+      Change by <a href="https://github.com/pitmates/hexa" target="_blank">pitmates</a><br>  
+	  <span id="busuanzi_container_site_pv">
+        总访问量 <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_pv"></span></a> 次
+      </span>
+      <span id="busuanzi_container_site_uv">
+        <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_uv"></span></a> 人
+      </span>  
+    </div>
+  </div>
+    <!-- 为超链接加上target='_blank'属性 -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('a[href^="http"]').each(function() {
+			$(this).attr('target', '_blank');
+		});
+	});
+	</script>
+</footer>
+
+   
+
