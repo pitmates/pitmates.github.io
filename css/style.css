@@ -19,7 +19,7 @@ a {
   transition: color ease 0.3s;
 }
 blockquote {
-  font-size: 16px;
+  font-size: 20px;
 }
 h1,
 h2,
@@ -43,87 +43,89 @@ h7 {
 #toc a {
   text-decoration: none;
 }
-.article-content pre,
-.article-content .highlight {
+font-size 20px,
+.highlight {
   background: #1d1f21;
   margin: 0.5em 0;
   padding: 1em 2%;
   overflow: auto;
   color: #c5c8c6;
   line-height: line-height;
-  font-size: font-size;
+  font-size: 20px;
 }
-.article-content .highlight .gutter pre,
-.article-content .gist .gist-file .gist-data .line-numbers {
+.highlight .gutter pre,
+.gist .gist-file .gist-data .line-numbers {
   color: #666;
-  font-size: 0.85em;
+  font-size: 20px;
   line-height: line-height;
   font-size: font-size;
 }
 .article-content pre {
   font-family: font-mono;
 }
-.article-content pre code {
+font-size 20px code {
   background: none;
   text-shadow: none;
+}
+font-size: 20px {
   padding: 0;
 }
-.article-content .highlight pre {
+.highlight pre {
   border: none;
   margin: 0;
   padding: 0;
 }
-.article-content .highlight table {
+.highlight table {
   margin: 0;
   width: auto;
 }
-.article-content .highlight td {
+.highlight td {
   border: none;
   padding: 0;
 }
-.article-content .highlight figcaption {
-  font-size: 0.85em;
+.highlight figcaption {
+  font-size: 20px;
   text-align: left;
   color: #969896;
   line-height: 1em;
   padding: 0.5em 0;
   margin-bottom: 0.5em;
 }
-.article-content .highlight figcaption a {
+.highlight figcaption a {
   float: right;
 }
-.article-content .highlight .gutter pre {
+.highlight .gutter pre {
   text-align: right;
   padding-right: 1.5em;
 }
-.article-content .gist {
+.gist {
   margin: 0.5em 0;
   background: #1d1f21;
   padding: 1em 2%;
 }
-.article-content .gist .gist-file {
+.gist .gist-file {
   border: none;
   font-family: font-mono;
   margin: 0;
 }
-.article-content .gist .gist-file .gist-data {
+.gist .gist-file .gist-data {
   background: none;
   border: none;
 }
-.article-content .gist .gist-file .gist-data .line-numbers {
+.gist .gist-file .gist-data .line-numbers {
   background: none;
   border: none;
   padding: 0 1.5em 0 0;
 }
-.article-content .gist .gist-file .gist-data .line-data {
+.gist .gist-file .gist-data .line-data {
   padding: 0 !important;
 }
-.article-content .gist .gist-file .highlight {
+.gist .gist-file .highlight {
   margin: 0;
   padding: 0;
   border: none;
 }
-.article-content .gist .gist-file .gist-meta {
+.gist .gist-file .gist-meta {
   background: #1d1f21;
   color: #969896;
   font: 0.85em font-serif;
@@ -131,11 +133,11 @@ h7 {
   margin-top: 1em;
   text-shadow: none;
 }
-.article-content .gist .gist-file .gist-meta a {
+.gist .gist-file .gist-meta a {
   color: color-blue;
   font-weight: normal;
 }
-.article-content .gist .gist-file .gist-meta a:hover {
+.gist .gist-file .gist-meta a:hover {
   color: color-theme;
 }
 pre .comment {
