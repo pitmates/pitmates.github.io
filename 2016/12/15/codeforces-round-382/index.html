@@ -1,0 +1,342 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    <meta name="author" content="pitmates">
+    
+    <meta name="description" content="codeforces round 382">
+    
+    
+
+    
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>codeforces round 382 | pitmates&#39; blog · remember something</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery.backstretch.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/headroom.min.js"></script>
+    <script src="/js/jquery.headroom.min.js"></script> 
+    <script src="/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	<!-- highlight -->
+	<link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.8.0/styles/monokai-sublime.min.css">
+	<script src="//cdn.bootcss.com/highlight.js/9.8.0/highlight.min.js"></script>
+	<script src="//cdn.bootcss.com/highlight.js/9.8.0/languages/cpp.min.js"></script>
+	
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://zlper.net" title="pitmates' blog">pitmates&#39; blog</a>
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                <p class="navbar-text pull-right">remember something</p>
+
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/archives">归档</a></li>
+                    
+                    <li id="nav-tags"><a href="/tags">标签</a></li>
+                    
+                    <li id="nav-categories"><a href="/categories">分类</a></li>
+                    
+                    <li id="nav-vita"><a href="/vita">关于</a></li>
+                    
+                    <li id="nav-links"><a href="/links">链接</a></li>
+                    
+                    
+                    <li><a href="https://github.com/pitmates" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+	<script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var backRoot = "/images/background/";
+    var backArray = [ "1.jpeg", "2.jpg", "3.png", "4.jpg", "5.jpg", "6.jpg", "7.jpeg", "8.jpg", "9.png", "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2016/12/15/codeforces-round-382/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>codeforces round 382</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2016-12-15T07:58:51.000Z" itemprop="datePublished">2016-12-15</time>，更新于:<time datetime="2016-12-15T08:18:59.891Z" itemprop="dateModified">2016-12-15</time>，By <a href="http://zlper.net" title="pitmates">pitmates</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <font size=3><strong class="toc-title">大纲</strong></font size>
+                <font size=3><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#735A、Ostap-and-Grasshopper"><span class="toc-number">1.</span> <span class="toc-text">735A、Ostap and Grasshopper</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路："><span class="toc-number">1.1.</span> <span class="toc-text">思路：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code"><span class="toc-number">1.2.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#735B、Urbanization"><span class="toc-number">2.</span> <span class="toc-text">735B、Urbanization</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解法："><span class="toc-number">2.1.</span> <span class="toc-text">解法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code-1"><span class="toc-number">2.2.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#735C、Tennis-Championship"><span class="toc-number">3.</span> <span class="toc-text">735C、Tennis Championship</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解法：-1"><span class="toc-number">3.1.</span> <span class="toc-text">解法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code-2"><span class="toc-number">3.2.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#735D、Taxes"><span class="toc-number">4.</span> <span class="toc-text">735D、Taxes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解法：-2"><span class="toc-number">4.1.</span> <span class="toc-text">解法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code-3"><span class="toc-number">4.2.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#735E、736D、736E待解决"><span class="toc-number">5.</span> <span class="toc-text">735E、736D、736E待解决</span></a></li></ol></font size>
+            </div>
+            
+            <font size=4><p>　　<a href="http://codeforces.com/contest/735" target="_blank" rel="external">codeforces round 382</a> </p>
+<a id="more"></a>
+<h2 id="735A、Ostap-and-Grasshopper"><a href="#735A、Ostap-and-Grasshopper" class="headerlink" title="735A、Ostap and Grasshopper"></a>735A、Ostap and Grasshopper</h2><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>　　从G往T跳，只要不经过#并且能到达就YES，否则NO。</p>
+<h3 id="code"><a href="#code" class="headerlink" title="code"></a>code</h3><pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+
+#define rep(i, j, k) for(int i = (int) j; i &lt; (int) k; ++i)
+#define sz(x) ((int) (x).size())
+#define ll long long
+#define mp make_pair
+#define pii pair&lt;int, int &gt;
+#define fi first
+#define se second
+#define pb push_back
+#define inf 0x3f3f3f3f
+#define INF 0x3f3f3f3f3f3f3f
+#define zero(x) memset((x), (0), sizeof (x))
+#define zerox(x, y) memset((x), (y), sizeof (x))
+
+using namespace std;
+
+int main()
+{
+#ifdef PIT
+//freopen(&quot;&quot;, &quot;r&quot;, stdin);
+//freopen(&quot;.out&quot;, &quot;w&quot;, stdout);
+#endif // PIT
+    ios_base::sync_with_stdio(false); cin.tie(0);
+
+    int n, k;
+    string s;
+    cin &gt;&gt; n &gt;&gt; k;
+    cin &gt;&gt; s;
+    int g, t;
+    rep(i, 0, n) {
+        if(s[i] == &#39;G&#39;) g = i;
+        if(s[i] == &#39;T&#39;) t = i;
+    }
+    if(t &lt; g) k = -k;
+    bool f = 0;
+    while(1) {
+        if(g &gt;= n || g &lt; 0) break;
+        g += k;
+        if(s[g] == &#39;#&#39;) break;
+        if(g == t) {f = 1; break; }
+    }
+    if(f) cout &lt;&lt; &quot;YES&quot;;
+    else cout &lt;&lt; &quot;NO&quot;;
+    return 0;
+}
+</code></pre>
+<h2 id="735B、Urbanization"><a href="#735B、Urbanization" class="headerlink" title="735B、Urbanization"></a>735B、Urbanization</h2><h3 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h3><p>　　数组从大到小排序，交换n1, n2使得<code>n1 &lt; n2</code>，先选前x个，再选前y个（证明略）。计算结果。</p>
+<h3 id="code-1"><a href="#code-1" class="headerlink" title="code"></a>code</h3><pre><code class="c++">#include &lt;bits/stdc++.h&gt;
+
+#define rep(i, j, k) for(int i = (int) j; i &lt; (int) k; ++i)
+#define sz(x) ((int) (x).size())
+#define ll long long
+#define mp make_pair
+#define pii pair&lt;int, int &gt;
+#define fi first
+#define se second
+#define pb push_back
+#define inf 0x3f3f3f3f
+#define INF 0x3f3f3f3f3f3f3f
+#define zero(x) memset((x), (0), sizeof (x))
+#define zerox(x, y) memset((x), (y), sizeof (x))
+
+using namespace std;
+const int N = 100100;
+
+int a[N];
+int n, n1, n2;
+
+int main()
+{
+#ifdef PIT
+//freopen(&quot;&quot;, &quot;r&quot;, stdin);
+//freopen(&quot;.out&quot;, &quot;w&quot;, stdout);
+#endif // PIT
+    ios_base::sync_with_stdio(false); cin.tie(0);
+
+    cin &gt;&gt; n &gt;&gt; n1 &gt;&gt; n2;
+    rep(i, 0, n) cin &gt;&gt; a[i];
+    sort(a, a+n);
+    reverse(a, a+n);
+    ll s1 = 0, s2 = 0;
+    if(n1 &gt; n2) swap(n1, n2);
+    rep(i, 0, n1) s1 += a[i];
+    rep(i, 0, n2) s2 += a[i+n1];
+    if(n1 == 0) printf(&quot;%.8f\n&quot;, 1.* s2/n2);
+    else printf(&quot;%.8f\n&quot;, 1.*s1/n1 + 1.*s2/n2);
+    return 0;
+}
+</code></pre>
+<h2 id="735C、Tennis-Championship"><a href="#735C、Tennis-Championship" class="headerlink" title="735C、Tennis Championship"></a>735C、Tennis Championship</h2><h3 id="解法：-1"><a href="#解法：-1" class="headerlink" title="解法："></a>解法：</h3><p>　　假设胜者一直是1，当其打了k场时与淘汰（不一定都与其比赛，可能和对手比赛被对手淘汰）至少为f[k]个人，那么下一个人能和其比赛的至少要打k-1场，那么这个人淘汰至少f[k-1]。那么如果1选手赢了比赛，其打了k+1场，淘汰<code>f[k] + f[k-1]</code>个人。至此，可以看出是fibonacci数列。</p>
+<h3 id="code-2"><a href="#code-2" class="headerlink" title="code"></a>code</h3><pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+
+#define rep(i, j, k) for(int i = (int) j; i &lt; (int) k; ++i)
+#define sz(x) ((int) (x).size())
+#define ll long long
+#define mp make_pair
+#define pii pair&lt;int, int &gt;
+#define fi first
+#define se second
+#define pb push_back
+#define inf 0x3f3f3f3f
+#define INF 0x3f3f3f3f3f3f3f
+#define zero(x) memset((x), (0), sizeof (x))
+#define zerox(x, y) memset((x), (y), sizeof (x))
+
+using namespace std;
+
+int main()
+{
+#ifdef PIT
+//freopen(&quot;&quot;, &quot;r&quot;, stdin);
+//freopen(&quot;.out&quot;, &quot;w&quot;, stdout);
+#endif // PIT
+    ios_base::sync_with_stdio(false); cin.tie(0);
+
+    ll n, a, b;
+    cin &gt;&gt; n;
+    int t = 0;
+    for(a = 1, b = 2; b &lt;= n; ++t) b = a + b, a = b - a;
+    cout &lt;&lt; t &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+<h2 id="735D、Taxes"><a href="#735D、Taxes" class="headerlink" title="735D、Taxes"></a>735D、Taxes</h2><h3 id="解法：-2"><a href="#解法：-2" class="headerlink" title="解法："></a>解法：</h3><p>　　哥德巴赫猜想，偶数可化成2个质数相加（数据范围内）。奇数可化为一个奇数+一个偶数。枚举特例就行（数字2）。</p>
+<h3 id="code-3"><a href="#code-3" class="headerlink" title="code"></a>code</h3><pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+
+#define rep(i, j, k) for(int i = (int) j; i &lt; (int) k; ++i)
+#define sz(x) ((int) (x).size())
+#define ll long long
+#define mp make_pair
+#define pii pair&lt;int, int &gt;
+#define fi first
+#define se second
+#define pb push_back
+#define inf 0x3f3f3f3f
+#define INF 0x3f3f3f3f3f3f3f
+#define zero(x) memset((x), (0), sizeof (x))
+#define zerox(x, y) memset((x), (y), sizeof (x))
+
+using namespace std;
+
+bool isprime(int x) {
+    for(int i = 2; i * i &lt;= x; ++i)
+        if(x % i == 0) return 0;
+    return 1;
+}
+
+int main()
+{
+#ifdef PIT
+//freopen(&quot;&quot;, &quot;r&quot;, stdin);
+//freopen(&quot;.out&quot;, &quot;w&quot;, stdout);
+#endif // PIT
+    ios_base::sync_with_stdio(false); cin.tie(0);
+
+    int n;
+    cin &gt;&gt; n;
+    if(n&amp;1) {
+        if(isprime(n)) cout &lt;&lt; 1 &lt;&lt; endl;
+        else if(isprime(n-2)) cout &lt;&lt; 2 &lt;&lt; endl;
+        else cout &lt;&lt; 3 &lt;&lt; endl;
+    }
+    else if(n == 2) cout &lt;&lt; 1 &lt;&lt; endl;
+    else cout &lt;&lt; 2 &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<p>　　</p>
+<h2 id="735E、736D、736E待解决"><a href="#735E、736D、736E待解决" class="headerlink" title="735E、736D、736E待解决"></a>735E、736D、736E待解决</h2></font size>
+
+			
+            <section class="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/2016/12/15/codeforces-round-382/" data-title="codeforces round 382" data-url="http://zlper.net/2016/12/15/codeforces-round-382/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"pitm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+        </div>
+    </div>
+</article>
+
+<footer id="footer">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> </script>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner" align = "center">
+      Copyright &copy; 2016 
+	  <a href="/" target="_blank"> pitmates </a> <br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+	  &nbsp;|&nbsp;
+      Theme by <a href="https://github.com/XadillaX/hexadillax" target="_blank">Hexadillax</a>
+	  &nbsp;|&nbsp;
+      Change by <a href="https://github.com/pitmates/hexa" target="_blank">pitmates</a><br>  
+	  <span id="busuanzi_container_site_pv">
+        总访问量 <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_pv"></span></a> 次
+      </span>
+      <span id="busuanzi_container_site_uv">
+        <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_uv"></span></a> 人
+      </span>  
+    </div>
+  </div>
+    <!-- 为超链接加上target='_blank'属性 -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('a[href^="http"]').each(function() {
+			$(this).attr('target', '_blank');
+		});
+	});
+	</script>
+</footer>
+
+   
+
