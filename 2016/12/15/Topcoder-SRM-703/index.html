@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    <meta name="author" content="pitmates">
+    
+    <meta name="description" content="Problem 250、AlternatingString思路：　　线性扫描，如果当前位和前一位不同，长度加1；否则重新计算。
+codeclass AlternatingString {
+    public:
+    int maxLength(string s) {
+        int n ">
+    
+    
+
+    
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Topcoder SRM 703 (Div.2) | pitmates&#39; blog · remember something</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery.backstretch.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/headroom.min.js"></script>
+    <script src="/js/jquery.headroom.min.js"></script> 
+    <script src="/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	<!-- highlight -->
+	<link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.8.0/styles/monokai-sublime.min.css">
+	<script src="//cdn.bootcss.com/highlight.js/9.8.0/highlight.min.js"></script>
+	<script src="//cdn.bootcss.com/highlight.js/9.8.0/languages/cpp.min.js"></script>
+	
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://zlper.net" title="pitmates' blog">pitmates&#39; blog</a>
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                <p class="navbar-text pull-right">remember something</p>
+
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/archives">归档</a></li>
+                    
+                    <li id="nav-tags"><a href="/tags">标签</a></li>
+                    
+                    <li id="nav-categories"><a href="/categories">分类</a></li>
+                    
+                    <li id="nav-vita"><a href="/vita">关于</a></li>
+                    
+                    <li id="nav-links"><a href="/links">链接</a></li>
+                    
+                    
+                    <li><a href="https://github.com/pitmates" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+	<script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var backRoot = "/images/background/";
+    var backArray = [ "1.jpeg", "2.jpg", "3.png", "4.jpg", "5.jpg", "6.jpg", "7.jpeg", "8.jpg", "9.png", "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2016/12/15/Topcoder-SRM-703/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>Topcoder SRM 703 (Div.2)</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2016-12-15T03:40:19.000Z" itemprop="datePublished">2016-12-15</time>，更新于:<time datetime="2016-12-15T07:44:30.019Z" itemprop="dateModified">2016-12-15</time>，By <a href="http://zlper.net" title="pitmates">pitmates</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <font size=3><strong class="toc-title">大纲</strong></font size>
+                <font size=3><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-250、AlternatingString"><span class="toc-number">1.</span> <span class="toc-text">Problem 250、AlternatingString</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路："><span class="toc-number">1.1.</span> <span class="toc-text">思路：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code"><span class="toc-number">1.2.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-500、GCDGraph"><span class="toc-number">2.</span> <span class="toc-text">Problem 500、GCDGraph</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解法："><span class="toc-number">2.1.</span> <span class="toc-text">解法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code-1"><span class="toc-number">2.2.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-1000、TreeDiameters"><span class="toc-number">3.</span> <span class="toc-text">Problem 1000、TreeDiameters</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解法：-1"><span class="toc-number">3.1.</span> <span class="toc-text">解法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code-2"><span class="toc-number">3.2.</span> <span class="toc-text">code</span></a></li></ol></li></ol></font size>
+            </div>
+            
+            <font size=4><a id="more"></a>
+<h2 id="Problem-250、AlternatingString"><a href="#Problem-250、AlternatingString" class="headerlink" title="Problem 250、AlternatingString"></a>Problem 250、AlternatingString</h2><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>　　线性扫描，如果当前位和前一位不同，长度加1；否则重新计算。</p>
+<h3 id="code"><a href="#code" class="headerlink" title="code"></a>code</h3><pre><code class="cpp">class AlternatingString {
+    public:
+    int maxLength(string s) {
+        int n = s.size();
+        int m = 0;
+        s[n] = s[n-1];
+        for(int i = 0, t = 1; i &lt; n; ++i) {
+            if(s[i+1] != s[i]) ++t;
+            else {
+                m = max(t, m);
+                t = 1;
+            }
+        }
+        printf(&quot;%d\n&quot;, m);
+        return m;
+    }
+};
+</code></pre>
+<h2 id="Problem-500、GCDGraph"><a href="#Problem-500、GCDGraph" class="headerlink" title="Problem 500、GCDGraph"></a>Problem 500、GCDGraph</h2><h3 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h3><p>　　并查集处理 <code>i∈[k+1, n]</code> 和i的倍数，将它们归为同一集合。最后如果x的集合和y的集合相同，则可达。<br>　　（PS：另外做法：取 <code>i∈[k+1, n]</code> 内<code>gcd(x, i) &gt; k</code> 的集合Sa，<code>gcd(y, i) &gt; k</code> 的集合Sb，只要满足<code>gcd(Sai, Sbj) &gt; k, (Sai∈Sa, Sbj∈Sb)</code> 即有解，否则无解。我认为这解法不太严谨（雾。）</p>
+<h3 id="code-1"><a href="#code-1" class="headerlink" title="code"></a>code</h3><pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+
+#define INF 0x3f3f3f3f
+#define rep(i, j, k) for(int i = (int) j; i &lt; (int) k; ++i)
+#define sz(x) ((int) (x).size())
+#define ll long long
+#define mp make_pair
+#define pii pair&lt;int, int &gt;
+#define fi first
+#define se second
+#define pb push_back
+#define zero(x) memset((x), (0), sizeof (x))
+
+using namespace std;
+const int N = 1000010;
+
+class GCDGraph {
+    public:
+    //    vector&lt;int &gt; vx, vy;
+
+    int f[N];
+    int findset(int z) {
+        if(z == f[z]) return z;
+        return f[z] = findset(f[z]);
+    }
+    void unionset(int u, int v) {
+        u = findset(u); v = findset(v);
+        if(u != v) f[u] = v;
+    }
+
+    string possible(int n, int k, int x, int y) {
+        if(x == y) return &quot;Possible&quot;;
+        if(__gcd(x, y) &gt; k) return &quot;Possible&quot;;
+        if(x &lt;= k || y &lt;= k) return &quot;Impossible&quot;;
+
+        for(int i = 0; i &lt;= n; ++i) f[i] = i;
+        for(int i = k+1; i &lt;= n; ++i) {
+            for(int j = i; j &lt;= n; j += i) unionset(j, i);
+        }
+
+        return findset(x) == findset(y) ? &quot;Possible&quot; : &quot;Impossible&quot;;
+    /**
+        vx.clear(); vy.clear();
+        rep(i, k+1, n+1) if(__gcd(x, i) &gt; k) vx.pb(i);
+        rep(i, k+1, n+1) if(__gcd(y, i) &gt; k) vy.pb(i);
+        rep(i, 0, sz(vx)) rep(j, 0, sz(vy)){
+            if(__gcd(vx[i], vy[j]) &gt; k) return &quot;Possible&quot;;
+        }
+        return &quot;Impossible&quot;;
+    **/
+    }
+};
+</code></pre>
+<h2 id="Problem-1000、TreeDiameters"><a href="#Problem-1000、TreeDiameters" class="headerlink" title="Problem 1000、TreeDiameters"></a>Problem 1000、TreeDiameters</h2><h3 id="解法：-1"><a href="#解法：-1" class="headerlink" title="解法："></a>解法：</h3><p>　　建图，对于p[i]点与i+1点相连，引入<code>n+i+2</code>点，让p[i]与n+i+2相连，然后n+i+2点与i+1相连。主要处理类似<code>[0,1,2,2,1]</code>这类的点的情况。<br>　　其次计算，dfs计算与当前点u距离d的点的个数k，用容斥计算状况数。首先，连接方式有<code>k*k</code>种，其中点集(假设p个点集)共享某一点v到达u的集合（假设有ki个）不能相互到达，以此类推，<code>ans = k*k - k1*k1 - k2*k2 - ... - ki*ki - .. - kp*kp</code>。</p>
+<h3 id="code-2"><a href="#code-2" class="headerlink" title="code"></a>code</h3><pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+
+#define INF 0x3f3f3f3f
+#define rep(i, j, k) for(int i = (int) j; i &lt; (int) k; ++i)
+#define sz(x) ((int) (x).size())
+#define ll long long
+#define mp make_pair
+#define pii pair&lt;int, int &gt;
+#define fi first
+#define se second
+#define pb push_back
+#define zero(x) memset((x), (0), sizeof (x))
+
+using namespace std;
+const int N = 2020;
+
+class TreeDiameters {
+    public:
+    vector&lt;int &gt; E[N];
+    int dis[N];
+    int sum[N], sum2[N];
+
+    void dfs(int x, int parent, int depth) {
+        ++dis[depth];
+        for(int y : E[x]) if(y != parent) 
+            dfs(y, x, depth+1);
+    }
+
+    int getMax(vector&lt;int&gt; p) {
+        if(sz(p) == 1) return 1;
+        for(int i = 0; i &lt; N; ++i) E[i].clear();
+        int n = sz(p);
+        for(int i = 0; i &lt; n; ++i) {
+            E[p[i]].pb(n+i+2); E[n+i+2].pb(p[i]);
+            E[i+1].pb(n+i+2); E[n+i+2].pb(i+1);
+        }
+        int ans = 0;
+        rep(i, 0, n+n+2) {
+            zero(sum); zero(sum2);
+            for(int x : E[i]){
+                zero(dis);
+                dfs(x, i, 1);
+            //rep(j, 1, n+1) printf(&quot;%d &quot;, dis[j]); puts(&quot;&quot;);
+                rep(j, 1, n+1) {
+                    sum[j] += dis[j];
+                    sum2[j] += dis[j] * dis[j];
+                }
+            }
+            rep(j, 1, n+1) 
+                ans = max(ans, (sum[j]*sum[j] - sum2[j])/2);
+        }
+        return ans;
+    }
+};
+</code></pre>
+</font size>
+
+			
+            <section class="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/2016/12/15/Topcoder-SRM-703/" data-title="Topcoder SRM 703 (Div.2)" data-url="http://zlper.net/2016/12/15/Topcoder-SRM-703/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"pitm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+        </div>
+    </div>
+</article>
+
+<footer id="footer">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> </script>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner" align = "center">
+      Copyright &copy; 2016 
+	  <a href="/" target="_blank"> pitmates </a> <br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+	  &nbsp;|&nbsp;
+      Theme by <a href="https://github.com/XadillaX/hexadillax" target="_blank">Hexadillax</a>
+	  &nbsp;|&nbsp;
+      Change by <a href="https://github.com/pitmates/hexa" target="_blank">pitmates</a><br>  
+	  <span id="busuanzi_container_site_pv">
+        总访问量 <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_pv"></span></a> 次
+      </span>
+      <span id="busuanzi_container_site_uv">
+        <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_uv"></span></a> 人
+      </span>  
+    </div>
+  </div>
+    <!-- 为超链接加上target='_blank'属性 -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('a[href^="http"]').each(function() {
+			$(this).attr('target', '_blank');
+		});
+	});
+	</script>
+</footer>
+
+   
+
