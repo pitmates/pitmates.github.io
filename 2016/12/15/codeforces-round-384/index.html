@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    <meta name="author" content="pitmates">
+    
+    <meta name="description" content="codeforces round 384">
+    
+    
+
+    
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>codeforces-round-384 | pitmates&#39; blog · remember something</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery.backstretch.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/headroom.min.js"></script>
+    <script src="/js/jquery.headroom.min.js"></script> 
+    <script src="/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	<!-- highlight -->
+	<link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.8.0/styles/monokai-sublime.min.css">
+	<script src="//cdn.bootcss.com/highlight.js/9.8.0/highlight.min.js"></script>
+	<script src="//cdn.bootcss.com/highlight.js/9.8.0/languages/cpp.min.js"></script>
+	
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://zlper.net" title="pitmates' blog">pitmates&#39; blog</a>
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                <p class="navbar-text pull-right">remember something</p>
+
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/archives">归档</a></li>
+                    
+                    <li id="nav-tags"><a href="/tags">标签</a></li>
+                    
+                    <li id="nav-categories"><a href="/categories">分类</a></li>
+                    
+                    <li id="nav-vita"><a href="/vita">关于</a></li>
+                    
+                    <li id="nav-links"><a href="/links">链接</a></li>
+                    
+                    
+                    <li><a href="https://github.com/pitmates" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+	<script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var backRoot = "/images/background/";
+    var backArray = [ "1.jpeg", "2.jpg", "3.png", "4.jpg", "5.jpg", "6.jpg", "7.jpeg", "8.jpg", "9.png", "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2016/12/15/codeforces-round-384/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>codeforces-round-384</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2016-12-15T08:27:06.000Z" itemprop="datePublished">2016-12-15</time>，更新于:<time datetime="2016-12-15T08:43:00.044Z" itemprop="dateModified">2016-12-15</time>，By <a href="http://zlper.net" title="pitmates">pitmates</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <font size=3><strong class="toc-title">大纲</strong></font size>
+                <font size=3><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#743A、Vladik-and-flights"><span class="toc-number">1.</span> <span class="toc-text">743A、Vladik and flights</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路："><span class="toc-number">1.1.</span> <span class="toc-text">思路：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code"><span class="toc-number">1.2.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#743B、Chloe-and-the-sequence"><span class="toc-number">2.</span> <span class="toc-text">743B、Chloe and the sequence</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解法："><span class="toc-number">2.1.</span> <span class="toc-text">解法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code-1"><span class="toc-number">2.2.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#743C、Vladik-and-fractions"><span class="toc-number">3.</span> <span class="toc-text">743C、Vladik and fractions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解法：-1"><span class="toc-number">3.1.</span> <span class="toc-text">解法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code-2"><span class="toc-number">3.2.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#743D、Chloe-and-pleasant-prizes"><span class="toc-number">4.</span> <span class="toc-text">743D、Chloe and pleasant prizes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解法：-2"><span class="toc-number">4.1.</span> <span class="toc-text">解法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#code-3"><span class="toc-number">4.2.</span> <span class="toc-text">code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#743E待解决"><span class="toc-number">5.</span> <span class="toc-text">743E待解决</span></a></li></ol></font size>
+            </div>
+            
+            <font size=4><p>　　<a href="http://codeforces.com/contest/743" target="_blank" rel="external">codeforces round 384</a> </p>
+<a id="more"></a>
+<h2 id="743A、Vladik-and-flights"><a href="#743A、Vladik-and-flights" class="headerlink" title="743A、Vladik and flights"></a>743A、Vladik and flights</h2><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>　　<code>s[a] == s[b] ? &quot;0&quot; : &quot;1&quot;</code></p>
+<h3 id="code"><a href="#code" class="headerlink" title="code"></a>code</h3><pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(false); cin.tie(0);
+    int n, a, b;
+    string s;
+    cin &gt;&gt; n &gt;&gt; a &gt;&gt; b;
+    cin &gt;&gt; s;
+    --a, --b;
+    if(s[a] == s[b]) cout &lt;&lt; 0;
+    else cout &lt;&lt; 1;
+    return 0;
+}
+</code></pre>
+<h2 id="743B、Chloe-and-the-sequence"><a href="#743B、Chloe-and-the-sequence" class="headerlink" title="743B、Chloe and the sequence"></a>743B、Chloe and the sequence</h2><h3 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h3><p>　　当在中间位置时，直接输出n；否则，左右相等，如果在右边，对应到左边位置，<code>n--</code>，直到找到中间位置输出。</p>
+<h3 id="code-1"><a href="#code-1" class="headerlink" title="code"></a>code</h3><pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+const int N = 52;
+
+ll b[N];
+
+void init() {
+    b[0] = 1;
+    for(int i = 1; i &lt; N; ++i) b[i] = (b[i-1]&lt;&lt;1);
+    return ;
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false); cin.tie(0);
+    init();
+    int n;
+    ll k;
+    cin &gt;&gt; n &gt;&gt; k;
+    while(k &amp;&amp; n) {
+        if(k == b[n-1]) {
+            cout &lt;&lt; n;
+            break;
+        }
+        if(k &gt; b[n-1]) k -= b[n-1];
+        --n;
+    }
+    return 0;
+}
+</code></pre>
+<h2 id="743C、Vladik-and-fractions"><a href="#743C、Vladik-and-fractions" class="headerlink" title="743C、Vladik and fractions"></a>743C、Vladik and fractions</h2><h3 id="解法：-1"><a href="#解法：-1" class="headerlink" title="解法："></a>解法：</h3><p>　　<code>x = n, y = n+1, z = (n+1)*n</code>，并且x, y, z不相等时成立（n=1的情况）。</p>
+<h3 id="code-2"><a href="#code-2" class="headerlink" title="code"></a>code</h3><pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+ll x, y, z, n;
+
+int main()
+{
+    ios_base::sync_with_stdio(false); cin.tie(0);
+    cin &gt;&gt; n;
+    if(n == 1) cout &lt;&lt; -1 &lt;&lt; endl;
+    else{
+        x = n; y = n + 1;
+        z = x * y;
+        cout &lt;&lt; x &lt;&lt; &quot; &quot; &lt;&lt; y &lt;&lt; &quot; &quot; &lt;&lt; z &lt;&lt; endl;
+    }
+    return 0;
+}
+</code></pre>
+<h2 id="743D、Chloe-and-pleasant-prizes"><a href="#743D、Chloe-and-pleasant-prizes" class="headerlink" title="743D、Chloe and pleasant prizes"></a>743D、Chloe and pleasant prizes</h2><h3 id="解法：-2"><a href="#解法：-2" class="headerlink" title="解法："></a>解法：</h3><p>　　原先做法：先求dfs序，求出去每个节点获得最大的pleasant，对pleasant排序，取dfs序不想交的2个最大的值求和。然后TLE了。<br>　　正确做法：树上dp，dp[u]表示u节点及其子树中的pleasant最大值。</p>
+<h3 id="code-3"><a href="#code-3" class="headerlink" title="code"></a>code</h3><pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+
+#define rep(i, j, k) for(int i = (int) j; i &lt; (int) k; ++i)
+#define sz(x) ((int) (x).size())
+#define ll long long
+#define mp make_pair
+#define pii pair&lt;int, int &gt;
+#define fi first
+#define se second
+#define pb push_back
+#define inf 0x3f3f3f3f
+#define INF 0x3f3f3f3f3f3f3f
+#define zero(x) memset((x), (0), sizeof (x))
+#define zerox(x, y) memset((x), (y), sizeof (x))
+
+using namespace std;
+const int N = 200020;
+
+vector&lt;int &gt; E[N];
+ll ple[N];
+ll dp[N];
+int n;
+ll ans;
+
+void dfs(int u, int p) {
+    for(int v : E[u]) if(v != p) {
+        dfs(v, u);
+        ple[u] += ple[v];
+        //此时dp[u]记录的是已经遍历的子树的max值
+        if(dp[u] != -INF) ans = max(ans, dp[u] + dp[v]); // 取子树内2棵不相交子树的max值和
+        dp[u] = max(dp[u], dp[v]);
+    }
+    //节点u所有子树的max值
+    dp[u] = max(dp[u], ple[u]);
+}
+
+int main()
+{
+//freopen(&quot;&quot;, &quot;r&quot;, stdin);
+//freopen(&quot;.out&quot;, &quot;w&quot;, stdout);
+
+    ios_base::sync_with_stdio(false); cin.tie(0);
+    cin &gt;&gt; n;
+    rep(i, 1, n+1) cin &gt;&gt; ple[i], dp[i] = -INF;
+    int x, y;
+    rep(i, 1, n) {
+        cin &gt;&gt; x &gt;&gt; y;
+        E[x].pb(y); E[y].pb(x);
+    }
+    ans = -INF;
+    dfs(1, 0);
+    if(ans == -INF) cout &lt;&lt; &quot;Impossible&quot;;
+    else cout &lt;&lt; ans;
+    return 0;
+}
+</code></pre>
+<p>　　</p>
+<h2 id="743E待解决"><a href="#743E待解决" class="headerlink" title="743E待解决"></a>743E待解决</h2></font size>
+
+			
+            <section class="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/2016/12/15/codeforces-round-384/" data-title="codeforces-round-384" data-url="http://zlper.net/2016/12/15/codeforces-round-384/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"pitm"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+        </div>
+    </div>
+</article>
+
+<footer id="footer">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> </script>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner" align = "center">
+      Copyright &copy; 2016 
+	  <a href="/" target="_blank"> pitmates </a> <br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+	  &nbsp;|&nbsp;
+      Theme by <a href="https://github.com/XadillaX/hexadillax" target="_blank">Hexadillax</a>
+	  &nbsp;|&nbsp;
+      Change by <a href="https://github.com/pitmates/hexa" target="_blank">pitmates</a><br>  
+	  <span id="busuanzi_container_site_pv">
+        总访问量 <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_pv"></span></a> 次
+      </span>
+      <span id="busuanzi_container_site_uv">
+        <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_uv"></span></a> 人
+      </span>  
+    </div>
+  </div>
+    <!-- 为超链接加上target='_blank'属性 -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('a[href^="http"]').each(function() {
+			$(this).attr('target', '_blank');
+		});
+	});
+	</script>
+</footer>
+
+   
+
